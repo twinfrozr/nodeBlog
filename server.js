@@ -11,7 +11,7 @@ mongoose.connection.on('connected',()=>{
     console.log('Mongodb connected');
 });
 mongoose.connection.on('error',()=>{
-    console.log('Mongodb not connected');
+    console.log('Mongodb not connected v2');
 });
 
 app.set('view engine','ejs')
