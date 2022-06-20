@@ -6,7 +6,13 @@ const Article = require('./models/article')
 const methodOverride = require('method-override')
 
 //db connection
-mongoose.connect('mongodb+srv://nodeblog:nodeblog@cluster0.2ohcyq7.mongodb.net/test')
+mongoose.connect('mongodb+srv://nodeblog:nodeblog@cluster0.2ohcyq7.mongodb.net/test?retryWrites=true&w=majority');
+mongoose.connection.on('connected',()=>{
+    console.log('Mongodb connected');
+});
+mongoose.connection.on('error',()=>{
+    console.log('Mongodb not connected');
+});
 
 app.set('view engine','ejs')
 app.use(express.urlencoded({extended:false}))
