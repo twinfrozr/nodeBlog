@@ -6,7 +6,7 @@ const Article = require('./models/article')
 const methodOverride = require('method-override')
 
 //db connection
-mongoose.connect('mongodb+srv://nodeblog:nodeblog@cluster0.2ohcyq7.mongodb.net/test?retryWrites=true&w=majority');
+mongoose.connect('mongodb+srv://nodeblog:nodeblog@cluster0.2ohcyq7.mongodb.net/test?retryWrites=true&w=majority',{useNewUrlParser:true,useUnifiedTopology:true});
 mongoose.connection.on('connected',()=>{
     console.log('Mongodb connected');
 });
