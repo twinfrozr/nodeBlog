@@ -48,8 +48,12 @@ router.put('/:id',async(req,res,next)=>{
 
 //delete route//
 router.delete('/:id',async(req,res)=>{
-    await Article.findByIdAndDelete(req.params.id)
-    res.redirect('/')
+    
+    let test=await Article.findByIdAndDelete(req.params.id)
+    
+    res.redirect('/');
+    
+    
 })
 
 

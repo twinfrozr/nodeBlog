@@ -30,6 +30,7 @@ app.get('/', async (req,res)=>{
 })
 
 //----article routes----//
+
 app.use('/articles', articleRouter)
 
 
