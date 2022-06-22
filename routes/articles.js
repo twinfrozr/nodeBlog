@@ -1,11 +1,12 @@
 const express= require('express');
 const Article = require('./../models/article')
 const router = express.Router();
+const authenticate = require('../middleware/authenticate')
 
 //get routes//
 
 //----create new article view------//
-router.get('/new',(req,res)=>{
+router.get('/new',authenticate,(req,res)=>{
 
     res.render("articles/new",{article:new Article()})
 })
@@ -20,7 +21,7 @@ router.get('/:id',async(req,res)=>{
 })
 
 //----edit article----//
-router.get('/edit/:id',async(req,res)=>{
+router.get('/edit/:id',authenticate,async(req,res)=>{
     const article = await Article.findById(req.params.id)
     
     res.render("articles/new",{article:article})
@@ -31,7 +32,7 @@ router.get('/edit/:id',async(req,res)=>{
 //post routes//
 
 //------create new article------//
-router.post('/',async (req,res,next)=>{
+router.post('/',authenticate,async (req,res,next)=>{
     req.article = new Article()
     next()
     
@@ -39,7 +40,7 @@ router.post('/',async (req,res,next)=>{
 
 //put routes//
 
-router.put('/:id',async(req,res,next)=>{
+router.put('/:id',authenticate,async(req,res,next)=>{
     req.article = await Article.findById(req.params.id)
     next()
 
@@ -47,10 +48,10 @@ router.put('/:id',async(req,res,next)=>{
 
 
 //delete route//
-router.delete('/:id',async(req,res)=>{
+router.delete('/:id',authenticate,async(req,res)=>{
     
     let test=await Article.findByIdAndDelete(req.params.id)
-    
+
     res.redirect('/');
     
     
