@@ -59,18 +59,16 @@ router.post('/login',(req,res,next)=>{
                     // res.status(200).send({
                     //     token:token
                     // });
-                    res.redirect("/")
-                    // res.json({
-                    //     message: 'Login successful',
-                    //     token
-                    // })
+                    //res.redirect("/")
+                    res.json({
+                        message: 'Login successful',
+                        token
+                    })
                 }else{
                     res.json({
                         message:'Password does not match!'
                     })
                 }
-
-
             })
 
         }else{

@@ -16,8 +16,9 @@ const authenticate = async(req,res,next)=>{
         }
     }
     catch(error){
-        console.log("You do not have permission to do that!")
-        res.redirect('/')
+        res.json({
+            message:"You are not authorized!"
+        })
     }
     
 }

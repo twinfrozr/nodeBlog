@@ -35,7 +35,11 @@ app.get('/', async (req,res)=>{
         createdAt:'desc'
     })
     
-    res.render("articles/index",{articles:articles})
+     res.status(200).json({
+        articles
+     })
+    
+    //res.render("articles/index",{articles:articles})
 
 })
 
