@@ -54,7 +54,11 @@ router.post('/login',(req,res,next)=>{
                     })
                 }
                 if(result){
-                    let token = jwt.sign({username: user.username},'secretValue1',{expiresIn:'3h'})
+                    let token = jwt.sign({username: user.username},'secretValue1',{expiresIn:'3h'});
+                    // console.log(token);
+                    // res.status(200).send({
+                    //     token:token
+                    // });
                     res.redirect("/")
                     // res.json({
                     //     message: 'Login successful',

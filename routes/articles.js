@@ -5,7 +5,16 @@ const authenticate = require('../middleware/authenticate')
 
 //get routes//
 
+//verify token in header
+router.get('/protected',authenticate,(req,res)=>{
+    
+    res.send("Token verified in header!")
+})
+
 //----create new article view------//
+
+
+
 router.get('/new',authenticate,(req,res)=>{
 
     res.render("articles/new",{article:new Article()})
